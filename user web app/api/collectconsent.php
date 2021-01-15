@@ -14,7 +14,6 @@ if (isset($_POST['insertdata'])) {
     $description2 = "After reading the Privacy Policy, I agree to have my data processed by Company XYZ to record and analyze my preferences (profiling).";
     $description3 = "After reading the Privacy Policy, I agree to have Company XYZ to share my data with third-parties. ";
 
-
     $query= "INSERT INTO consent (consent, decription, email, consentyn_date ) 
             VALUES ('$checkbox1', ' $description1','$email', '$date');
                    ('$checkbox2','$description2 ','$email', '$date');

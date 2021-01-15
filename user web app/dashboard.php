@@ -187,14 +187,10 @@ $results = mysqli_query($conn, $sql);
                             </div>
                         </div>
 
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" name = "insertdata" class="btn btn-primary">Submit</button>
                         </div>
-
-
-
 
                 </form>
             </div>
@@ -203,6 +199,5 @@ $results = mysqli_query($conn, $sql);
 
     </div>
 </div>
-
 
 </body>

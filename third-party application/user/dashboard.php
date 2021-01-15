@@ -1,11 +1,10 @@
 <?php
 include ("../view/menu_header.php");
-require_once('../model/config.php');
+require_once ("../DAL/dbconnection.php");
 
+$userDAL = new UserDAL();
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +16,14 @@ require_once('../model/config.php');
 <body>
     <ul>
         <li><a class="active" href=" ">Dashboard</a></li>
-     
-
     </ul>
     <div style = "margin-left:20% ">
-        <h3> Retrieved loT User Personal information</h3>
+        <h3> Retrieved loT User Personal Information</h3>
          <br>
         <table width="100%" class=" listing_table">
            <thead>
            <tr>
-               <th>Device ID</th>
+
                <th>First name</th>
                <th>Last name </th>
                <th>Address</th>
@@ -38,28 +35,31 @@ require_once('../model/config.php');
            </tr>
 
            </thead>
-
-            <tbody>
             <?php
 
+            $get_all_users = $usersDAL -> getUsers();
+            foreach (get_all_users as $results)
+            {
+                ?>
 
 
-
-
-
-
-            ?>
-
-
-
-            </tbody>
-
-
-        </table>
-
-
-
-
+            <tbody>
+                <tr>
+                    <td><?php echo $results['Firstname']; ?></td>
+                    <td><?php echo $results['Lastname']; ?></td>
+                    <td><?php echo $results['Address']; ?></td>
+                    <td><?php echo $results['City']; ?></td>
+                    <td><?php echo $results['State']; ?></td>
+                    <td><?php echo $results['Zipcode']; ?></td>
+                    <td><?php echo $results['Phonenumber']; ?></td>
+                    <td><?php echo $results['Email']; ?></td>
+                </tr>
+                </tbody>
+             <?php 
+            }
+          ?>
+            
+         </table>
 
     </div>
 

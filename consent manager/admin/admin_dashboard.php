@@ -14,7 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
-$sql = "SELECT id, consent, decription, email, consentyn_date FROM consent ";
+$sql = "SELECT id, consent, decription, email, consentyn_date FROM consent  WHERE consent = 'Yes' ";
 $results = mysqli_query($link, $sql);
 ?>
 
@@ -49,7 +49,7 @@ $results = mysqli_query($link, $sql);
             </tr>
             </thead>
 
-            <?php
+             <?php
             //use to return data
             while ($consent = mysqli_fetch_assoc($results)) {
                 ?>
@@ -60,6 +60,14 @@ $results = mysqli_query($link, $sql);
                     <td><?php echo $consent['decription']; ?></td>
                     <td><?php echo $consent['email']; ?></td>
                     <td><?php echo $consent['consentyn_date']; ?></td>
+
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#reviewrequestModal">
+                            Revoke Consent
+                        </button>
+
+                   </td>
 
                 </tr>
 
@@ -75,20 +83,58 @@ $results = mysqli_query($link, $sql);
             ///free results from memory
             mysqli_free_result($results);
             ?>
+
+        <?php 
+       
+         $sql = "SELECT id, consent, decription, email, consentyn_date FROM consent WHERE consent = 'No' ";
+         $results = mysqli_query($link, $sql);
+
+         ?>
+
         </table>
         <br><br><br>
         <h3>Did not Consent</h3>
         <table class="table table-striped">
-            <tr>
-                <th scope="col">Consent</th>
-                <th scope="col">Description</th>
-                <th scope="col">Email</th>
-                <th scope="col">Consent Date</th>
-                <th scope="col"> </th>
+        <tr>
+            <th scope="col">Consent</th>
+            <th scope="col">Description</th>
+            <th scope="col">Email</th>
+            <th scope="col">Consent Date</th>
+            <th scope="col"> </th>
 
-            </tr>
+        </tr>
         </table>
-        <br><br><br>
+        <?php
+            //use to return data
+            while ($consent = mysqli_fetch_assoc($results)) {
+                ?>
+                <tbody>
+                <tbody>
+                <tr>
+                    <td><?php echo $consent['consent']; ?></td>
+                    <td><?php echo $consent['decription']; ?></td>
+                    <td><?php echo $consent['email']; ?></td>
+                    <td><?php echo $consent['consentyn_date']; ?></td>
+
+                </tr>
+                </tbody>
+                </tbody>
+                <?php
+            }
+            ?>
+            <?php
+            ///free results from memory
+            mysqli_free_result($results);
+            ?>
+
+
+        <?php 
+       
+         $sql = "SELECT id, consent, decription, email, consentyn_date FROM consent WHERE consent = 'revoked' ";
+         $results = mysqli_query($link, $sql);
+
+         ?>
+         <br><br><br>
         <h3>Revoked Consent</h3>
         <table class="table table-striped">
             <tr>
@@ -101,19 +147,37 @@ $results = mysqli_query($link, $sql);
 
             </tr>
         </table>
-                    </td>
+       <?php
+            //use to return data
+            while ($consent = mysqli_fetch_assoc($results)) {
+                ?>
+                <tbody>
+                <tbody>
+                <tr>
+                    <td><?php echo $consent['consent']; ?></td>
+                    <td><?php echo $consent['decription']; ?></td>
+                    <td><?php echo $consent['email']; ?></td>
+                    <td><?php echo $consent['consentyn_date']; ?></td>  
+                     <td><?php echo $consent['revoked_date']; ?></td>
+                   </td>
 
-        </tr>
+                </tr>
 
-        </tbody>
+                </tbody>
 
+                </tbody>
 
-
-        </tbody>
+                <?php
+            }
+            ?>
+            <?php
+            ///free results from memory
+            mysqli_free_result($results);
+            ?>
 
     </div>
 
-    </body>
+</body>
 
-    </html>
+</html>
 <?php include ("../view/footer.php");?>

@@ -96,7 +96,6 @@ $results = mysqli_query($link, $sql);
             </tr>
             </thead>
 
-
             <?php
             //use to return data
             while ($requests = mysqli_fetch_assoc($results)) {
@@ -110,15 +109,9 @@ $results = mysqli_query($link, $sql);
                     <td><?php echo $requests['rfrequest']; ?></td>
                     <td><?php echo $requests['date']; ?></td>
                     <td><?php echo $requests['status']; ?></td>
-
-
                 </tr>
-
                 </tbody>
                 </tbody>
-
-
-
                 <?php
             }
             ?>
@@ -140,7 +133,6 @@ $results = mysqli_query($link, $sql);
             <th scope="col">Status</th>
             <th scope="col">Completed Date</th>
             <th scope="col"> </th>
-
         </tr>
         </thead>
 

@@ -11,7 +11,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-$sql = "SELECT id, consent, decription, email, consentyn_date FROM consent ";
+$sql = "SELECT id, consent, decription, email, consentyn_date FROM consent WHERE consent = 'Yes' ";
 $results = mysqli_query($link, $sql);
 
 ?>
@@ -65,15 +65,11 @@ $results = mysqli_query($link, $sql);
                             Revoke Consent
                         </button>
 
-                    </td>
-
+                   </td>
 
                 </tr>
 
-
                 </tbody>
-
-
 
                 </tbody>
 
@@ -85,6 +81,14 @@ $results = mysqli_query($link, $sql);
             ///free results from memory
             mysqli_free_result($results);
             ?>
+
+        <?php 
+       
+         $sql = "SELECT id, consent, decription, email, consentyn_date FROM consent WHERE consent = 'No' ";
+         $results = mysqli_query($link, $sql);
+
+         ?>
+
         </table>
         <br><br><br>
         <h3>Did not Consent</h3>
@@ -98,6 +102,36 @@ $results = mysqli_query($link, $sql);
 
         </tr>
         </table>
+        <?php
+            //use to return data
+            while ($consent = mysqli_fetch_assoc($results)) {
+                ?>
+                <tbody>
+                <tbody>
+                <tr>
+                    <td><?php echo $consent['consent']; ?></td>
+                    <td><?php echo $consent['decription']; ?></td>
+                    <td><?php echo $consent['email']; ?></td>
+                    <td><?php echo $consent['consentyn_date']; ?></td>
+
+                </tr>
+                </tbody>
+                </tbody>
+                <?php
+            }
+            ?>
+            <?php
+            ///free results from memory
+            mysqli_free_result($results);
+            ?>
+
+
+        <?php 
+       
+         $sql = "SELECT id, consent, decription, email, consentyn_date FROM consent WHERE consent = 'revoked' ";
+         $results = mysqli_query($link, $sql);
+
+         ?>
          <br><br><br>
         <h3>Revoked Consent</h3>
         <table class="table table-striped">
@@ -107,13 +141,37 @@ $results = mysqli_query($link, $sql);
                 <th scope="col">Email</th>
                 <th scope="col">Consent Date</th>
                 <th scope="col">Revoked Date</th>
-
                 <th scope="col"> </th>
 
             </tr>
         </table>
+       <?php
+            //use to return data
+            while ($consent = mysqli_fetch_assoc($results)) {
+                ?>
+                <tbody>
+                <tbody>
+                <tr>
+                    <td><?php echo $consent['consent']; ?></td>
+                    <td><?php echo $consent['decription']; ?></td>
+                    <td><?php echo $consent['email']; ?></td>
+                    <td><?php echo $consent['consentyn_date']; ?></td>  
+                     <td><?php echo $consent['revoked_date']; ?></td>
+                   </td>
 
+                </tr>
 
+                </tbody>
+
+                </tbody>
+
+                <?php
+            }
+            ?>
+            <?php
+            ///free results from memory
+            mysqli_free_result($results);
+            ?>
 
     </div>
 
