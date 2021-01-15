@@ -1,6 +1,7 @@
 <?php
 include ("../view/menu_header.php");
 require_once ("../DAL/dbconnection.php");
+require_once ("../DAL/userDAL.php");
 
 $userDAL = new UserDAL();
 

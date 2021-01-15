@@ -1,7 +1,5 @@
 
-*/
-Data Access Layer that regulates access based on consent. It only pulls personal information for consent = Yes.
-/*
+ /* Data Access Layer that regulates access based on consent. It only pulls personal information for consent = Yes. */
 
 <?php
 require_once ("dbconnection.php");

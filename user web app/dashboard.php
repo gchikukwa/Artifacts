@@ -143,14 +143,11 @@ $results = mysqli_query($conn, $sql);
                                 <b>When Does this Privacy Policy Apply?</b>
                                 <br><br>
                                 This Privacy Policy applies whenever we collect personal information from or about you when you access or use our applications, products, and technology.
-
-
-                                <br><br>
-                                <b>Transfers Outside of the EU</b>
-                                <br><br>
-
-                                We may also transfer your personal data outside of the European Union in connection with the operation of our business, such as when we use a service provider that is based in another jurisdiction. If we transfer your personal data outside of the European Union please rest assured that we will ensure that appropriate measures are in place to protect your personal data and to comply with our obligations under applicable data protection law. When we transfer your personal data outside of the European Union, if required under data protection law we will either enter into contracts in the form approved by the European Commission with the entity that we transfer data to, or we will ensure that the company to which we transfer your personal data has agreed to abide by an approved transfer mechanism, such as the EU-US Privacy Shield framework.
-
+                                 <br><br>
+                                 <b> Data Retention </b>
+                                  <br><br>
+                                 We retain your personal data in accordance with our record retention policy. The record retention policy operates on the principle that we keep personal data for no longer than is necessary for the purpose for which we collected it, and in accordance with any requirements that are imposed on us by law. This means that the retention period for your personal data will vary depending on the type of personal data.
+                                
                                 <br><br>
                                 <b> Important Information about Consent</b>
                                 <br><br>
